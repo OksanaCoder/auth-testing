@@ -6,7 +6,9 @@ import google from '../assets/google.png'
 import facebook from '../assets/facebook.png'
 import SideBar from './SideBar.js'
 import '../App.css'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
 
 export default function Login() {
   const emailRef = useRef()
@@ -15,7 +17,10 @@ export default function Login() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -85,8 +90,8 @@ export default function Login() {
                       <Form.Control type="email" ref={emailRef} className="input-style" placeholder="Email" required />
                     </Form.Group>
                     <Form.Group id="password">
-                      <Form.Control type="password" ref={passwordRef} className="input-style" placeholder="Password" required />
-
+                      <Form.Control type={passwordShown ? "text" : "password"} ref={passwordRef} className="input-style" placeholder="Password" required />
+                      <i className="eye-3" onClick={togglePasswordVisiblity}>{eye}</i>
                     </Form.Group>
                     <div className="w-100 text-right have-account">
                       Forgot password ?

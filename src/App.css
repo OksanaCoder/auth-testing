@@ -159,3 +159,21 @@ form {
     margin-bottom: 63px;
     /* margin-right: 86px; */
 }
+.pass-hide {
+    position: relative;
+}
+.eye-1 {
+    position: absolute;
+    right: 30px;
+    top: 405px;
+}
+.eye {
+    position: absolute;
+    right: 30px;
+    top: 470px;
+}
+.eye-3 {
+    position: absolute;
+    right: 30px;
+    top: 335px;
+}

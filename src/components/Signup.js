@@ -19,7 +19,10 @@ export default function Signup() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -69,22 +72,23 @@ export default function Signup() {
                       <Form.Control type="email" ref={emailRef} className="input-style" placeholder="Email" required />
                     </Form.Group>
                     <Form.Group id="password">
-                      <Form.Control type="password" ref={passwordRef} className="input-style" placeholder="Password" required />
-
+                      <Form.Control type={passwordShown ? "text" : "password"} ref={passwordRef} className="input-style" placeholder="Password" required />
+                      <i className="eye-1" onClick={togglePasswordVisiblity}>{eye}</i>
                     </Form.Group>
                     <Form.Group id="password-confirm">
-                      <Form.Control type="password" ref={passwordConfirmRef} className="input-style" placeholder="Confirm password" required />
+                      <Form.Control type={passwordShown ? "text" : "password"} ref={passwordConfirmRef} className="input-style pass-hide" placeholder="Confirm password" required />
+                      <i className="eye" onClick={togglePasswordVisiblity}>{eye}</i>
                     </Form.Group>
                     <Row>
                       <Col lg={12} md={12} sm={12} xs={12}>
                         <Button disabled={loading} className="auth-btn top-60" type="submit">
                           Sign Up
-                  </Button>
+                    </Button>
                       </Col>
                       <Col lg={12} md={12} sm={12} xs={12}>
                         <Button disabled={loading} className="auth-btn not-now" type="submit">
                           Now now
-                  </Button>
+                   </Button>
                       </Col>
                     </Row>
                     <div className="w-100 text-center have-account">
@@ -99,7 +103,7 @@ export default function Signup() {
         </Col>
 
         <SideBar />
-    </Row>                                                                     
-    </>                                                                     
+    </Row>                                                                                 
+    </>                                                                                 
   )
 }

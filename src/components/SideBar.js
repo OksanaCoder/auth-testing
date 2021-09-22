@@ -1,6 +1,5 @@
 import React from "react"
 import { Col } from "react-bootstrap"
-
 import '../App.css'
 import logo from '../assets/Logo.png'
 import imgBig from '../assets/back.png'
