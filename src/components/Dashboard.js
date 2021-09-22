@@ -1,7 +1,9 @@
 import React, { useState } from "react"
-import { Card, Button, Alert } from "react-bootstrap"
+import { Card, Button, Col, Row } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import SideBar from './SideBar.js'
+
 
 export default function Dashboard() {
   const [error, setError] = useState("")
@@ -21,21 +23,23 @@ export default function Dashboard() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-          </Link>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
-      </div>
+      <Row>
+        <Col lg={6} md={6} sm={12} xs={12} className="sidebar-left">
+          <Row>
+            <Col lg={6} md={6} sm={12} xs={12}>
+            </Col>
+            <Col lg={6} md={6} sm={12} xs={12} className="text-center">
+              <h6 className="text-center head-text m-352">Well done!
+               You’ve created an account on Favvle!</h6>
+
+              <Button className="auth-btn" onClick={handleLogout}>
+                Continue</Button>
+
+            </Col>
+          </Row>
+        </Col>
+        <SideBar />
+      </Row>
     </>
   )
 }
